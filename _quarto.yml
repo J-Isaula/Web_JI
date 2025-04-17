@@ -13,7 +13,7 @@ project:
 
 website:
   title: "Juan Isaula"
-  site-url: https://j-isaula.github.io/website_ji/
+  site-url: https://j-isaula.github.io/Web_JI/
   description: "Technology and the Environment"
   open-graph:
     locale: en_US
@@ -35,7 +35,7 @@ website:
       - text: "Dashboards"
         href: about.html
       - text: "Historias"
-        href: sobre_juan.html
+        href: Sobre_mi
         
         
   page-footer:
