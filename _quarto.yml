@@ -29,7 +29,7 @@ website:
       - text: "Courses"
         href: papers
       - text: "UNAH Courses"
-        href: presentations
+        href: cursos_impartidos
       - text: "Blog"
         href: blog.html
       - text: "Dashboards"
