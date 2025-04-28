@@ -27,7 +27,7 @@ website:
       - text: "UNAH Courses"
         href: cursos_impartidos
       - text: "Blog"
-        href: posts
+        href: blog.html
       - text: "Dashboards"
         href: Dasboard
       - text: "Historias"

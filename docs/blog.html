@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Juan Isaula</title>
+<title>blog – Juan Isaula</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,9 +30,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -65,29 +68,79 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Juan Isaula">
-<meta property="og:description" content="Assistant Manager - Data Science">
-<meta property="og:image" content="https://j-isaula.github.io/Web_JI/perfil_ovalado.png">
+<link rel="alternate" type="application/rss+xml" title="Juan Isaula" href="blog.xml" data-external="1"><meta property="og:title" content="– Juan Isaula">
 <meta property="og:site_name" content="Juan Isaula">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="1027">
-<meta property="og:image:width" content="822">
-<meta name="twitter:title" content="Juan Isaula">
-<meta name="twitter:description" content="Assistant Manager - Data Science">
-<meta name="twitter:image" content="https://j-isaula.github.io/Web_JI/perfil_ovalado.png">
+<meta name="twitter:title" content="– Juan Isaula">
 <meta name="twitter:creator" content="@isaula_im">
-<meta name="twitter:image-height" content="1027">
-<meta name="twitter:image-width" content="822">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -102,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -114,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">UNAH Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link active" href="./blog.html" aria-current="page"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
@@ -136,49 +189,113 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="CMg">CMg <span class="quarto-category-count">(1)</span></div><div class="category" data-category="CTP">CTP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="CVP">CVP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="GRU">GRU <span class="quarto-category-count">(1)</span></div><div class="category" data-category="LSTM">LSTM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="PyTorch">PyTorch <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RNN">RNN <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<div class="quarto-about-trestles column-page">
-  <div class="about-entity">
-    <img src="perfil_ovalado.png" class="about-image
-  rounded " style="width: 20em;">
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Juan Isaula</h1>
-<p class="subtitle lead">Assistant Manager - Data Science</p>
-</div>
-<div class="quarto-title-meta column-page">
-  </div>
-</header>
-    <div class="about-links">
-  <a href="https://www.linkedin.com/in/juan-isaula-817531239/?originalSubdomain=hn" class="about-link" rel="" target="">
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://twitter.com/isaula_juan" class="about-link" rel="" target="">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">Twitter</span>
-  </a>
-  <a href="https://github.com/J-Isaula" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="https://j-isaula.github.io/website_ji/blog.html" class="about-link" rel="" target="">
-     <span class="about-link-text">Blog</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents"><main class="content column-page" id="quarto-document-content">
-<section id="hola" class="level1">
-<h1>Hola!</h1>
-<p>Soy un profesional apasionado por transformar datos en soluciones estratégicas que impulsen el crecimiento y la innovación en el sector financiero. Actualmente, como <strong><em>Subgerente de Ciencia de Datos en Grupo Financiero Ficohsa</em></strong>, lidero proyectos de analitica avanzada y modelado predictivo, la gestión del riesgo y la toma de decisiones basadas en evidencia.</p>
-<p>Mi sólida formación en <strong><em>Matemáticas y Estadística</em></strong> me permite abordar los desafíos complejos del entorno financiero con rigor técnico y visión analítica. Trabajo continuamente en el desarrollo de metodologías y herramientas innovadoras que integren el análisis de datos al corazón de la estrategia corporativa.</p>
-<p>Estoy comprometido con la excelencia, la innovación y la mejora continua, buscando siempre generar un impacto positivo en las organizaciones con la que colaboro.</p>
+<main class="content quarto-banner-title-block page-columns page-full column-body" id="quarto-document-content">
 
 
-</section>
-</main></div>
+
+
+<div class="column-page">
+
 </div>
- <!-- /main -->
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="RNN,GRU,LSTM,PyTorch" data-listing-date-sort="1706076000000" data-listing-file-modified-sort="1745813033974" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5382">
+<div class="thumbnail">
+<p><a href="./posts/Neural Network/index.html" class="no-external"></a></p><a href="./posts/Neural Network/index.html" class="no-external">
+<p><img loading="lazy" src="./posts/Neural Network/arq_rn.jpeg" class="thumbnail-image"></p>
+</a><p><a href="./posts/Neural Network/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/Neural Network/index.html" class="no-external">Arquitectura de Redes Neuronales</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/Neural Network/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RNN'); return false;">
+RNN
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('GRU'); return false;">
+GRU
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('LSTM'); return false;">
+LSTM
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('PyTorch'); return false;">
+PyTorch
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/Neural Network/index.html" class="no-external">Las arquitecturas de redes neuronales se refieren a los diseños estructurales y organizativos de redes neuronales artificiales (RNA). Estas arquitecturas determinan cómo se…<code></code></a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/Neural Network/index.html" class="no-external">
+<div class="listing-date">
+Jan 24, 2024
+</div>
+<div class="listing-author">
+Juan Isaula
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="CMg,CVP,CTP,Python" data-listing-date-sort="1681365600000" data-listing-file-modified-sort="1708670779000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1468">
+<div class="thumbnail">
+<p><a href="./posts/estructuras_mercado/index.html" class="no-external"></a></p><a href="./posts/estructuras_mercado/index.html" class="no-external">
+<p><img loading="lazy" src="./posts/estructuras_mercado/estruct_mercd.jpeg" class="thumbnail-image"></p>
+</a><p><a href="./posts/estructuras_mercado/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/estructuras_mercado/index.html" class="no-external">Estructuras de Mercado con Python</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/estructuras_mercado/index.html" class="no-external">Competencia Perfecta, Monopolio y Oligopolio</a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('CMg'); return false;">
+CMg
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('CVP'); return false;">
+CVP
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('CTP'); return false;">
+CTP
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+Python
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/estructuras_mercado/index.html" class="no-external">Este post tiene como objetivo dar a conocer la importancia del <code>software</code> de <code>Python</code> en el ambito microeconomico, particularmente en este caso hablamos de las diferentes <code>estruct…</code><code></code><code></code><code></code></a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/estructuras_mercado/index.html" class="no-external">
+<div class="listing-date">
+Apr 13, 2023
+</div>
+<div class="listing-author">
+Juan Isaula
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -199,6 +316,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -591,6 +715,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="mikemahoney218/mm218.dev" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 <footer class="footer">
