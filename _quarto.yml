@@ -1,10 +1,6 @@
 project:
   type: website
   output-dir: docs
-  resources:
-    - keybase.txt
-    - resume.pdf
-    - cv.pdf
   render:
     - "*.qmd"
     - "*.md"
@@ -31,7 +27,7 @@ website:
       - text: "UNAH Courses"
         href: cursos_impartidos
       - text: "Blog"
-        href: blog.html
+        href: posts
       - text: "Dashboards"
         href: about.html
       - text: "Historias"
