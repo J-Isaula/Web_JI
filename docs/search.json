@@ -33,5 +33,12 @@
     "title": "Juan Isaula",
     "section": "",
     "text": "Artículos\n\n\n\n\nArtículos\n\nBienvenidos! En esta sección encontrará una selección de artículos que he escrito a lo largo de mi trayectoria profesional.\n\n\n\n\nImpacto Aranceles de EE.UU sobre el desempeño de las Tarjetas de Crédito y Préstamos en Honduras\nModelando Riesgo Crediticio con Python\nFundamentos Estadísticos con R\nMatemáticas de la Optimización - Microeconomía\nTest de Jarque-Bera con Python\nRedes Neuronales LSTM vs GRU\nPronósticos de Inflación Honduras utilizando Redes Neuronales\nCredit Scoring"
+  },
+  {
+    "objectID": "Dasboard/index.html",
+    "href": "Dasboard/index.html",
+    "title": "App/Dashboards",
+    "section": "",
+    "text": "En esta sección encontrará algunas herramientas (App) que he desarrollado en lenguajes de programación R y Python, elaborados para distintas instituciones del país (Honduras) .\n\nGeoRGe\nAplicación creada R, utilizando principalmente los paquetes shiny | shinydashboard | DT | tidyverse | shinyWidgets | fresh. En la actualizad es utilizada en el Instituto Hondureño de Seguridad Social (IHSS). [Ver aplicación aquí]\nIA-JIM\nAplicación diseñada para facilitar el cálculo de gran parte de los indicadores actuariales primarios y secundarios del IHSS, en el marco del Régimen del Seguro de Previsión Social (RSPS). [Ver aplicación aquí]"
   }
 ]

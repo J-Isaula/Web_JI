@@ -29,7 +29,7 @@ website:
       - text: "Blog"
         href: posts
       - text: "Dashboards"
-        href: about.html
+        href: Dasboard
       - text: "Historias"
         href: Sobre_mi
         
