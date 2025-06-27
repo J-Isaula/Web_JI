@@ -10,7 +10,217 @@
 <atom:link href="https://j-isaula.github.io/Web_JI/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Technology and the Environment</description>
 <generator>quarto-1.6.42</generator>
-<lastBuildDate>Wed, 24 Jan 2024 06:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 01 Jul 2025 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>Deep Learning</title>
+  <dc:creator>Juan Isaula</dc:creator>
+  <link>https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>El Deep Learning está en todas partes, desde las cámaras de los smartphones hasta los asistentes de vos o los vehículos autónomos. En este curso, descubriras esta potente tecnología y aprenderás a aprovecharla con <code>PyTorch</code>, una de las bibliotecas de aprendizaje profundo más populares. Al finalizar tu recorrido por este documento, serás capaz de aprovechar PyTorch para resolver problemas de clasificación y regresión utilizando el aprendizaje profundo.</p>
+<section id="introducción-a-pytorch-biblioteca-de-deep-learning" class="level1">
+<h1>Introducción a PyTorch (biblioteca de Deep Learning)</h1>
+<p>Antes de comenzar a crear modelos complejos, te haré conocer PyTorch, un librería de aprendizaje profundo. Aprenderás a manipular tensores, crear estructuras de datos de PyTorch y construir tu primera red neuronal en PyTorch con capas lineales.</p>
+<p>El Deep Learning impulsa muchas innovaciones recientes y emocionantes, tales como la <em>traducción de idiomas</em>, <em>coches autónomos</em>, <em>diagnósticos médicos y chatbots.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/img/fig1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
+<section id="qué-es-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-deep-learning">Qué es Deep Learning?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/img/fig2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<p>Deep Learning (aprendizaje profundo) es un subconjunto del aprendizaje automático (machine learning). La estructura del modelo es una red de entradas (input), capas ocultas (hidden layers) y salidas (output), como se muestra en la siguiente imagen:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/img/fig3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<p>Como apreciamos en la figura, una red puede tener una o muchas capas ocultas</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/img/fig4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
+</figure>
+</div>
+<p>La intuición original detrás del aprendizaje profundo era crear modelos inspirados en el cerebro humano, sobre todo por cómo aprende el cerebro humano: a través de células interconectadas llamadas neuronas. Es por esto que llamamos a los modelos de aprendizaje profundo <strong><code>Redes Neuronales</code></strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/img/fig5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="150"></p>
+</figure>
+</div>
+<p>Estas estructuras de modelos en capas requieren muchos más datos en comparación con otros modelos de aprendizaje automático para derivar patrones. Generalmente hablamos de al menos cientos de miles de puntos de datos.</p>
+</section>
+<section id="pytorch-un-framework-del-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="pytorch-un-framework-del-deep-learning">PyTorch: un framework del deep learning</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/img/fig6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="180"></p>
+</figure>
+</div>
+<p>Si bien existen varios framework y paquetes para implementar el aprendizaje profundo en cuanto a algoritmos, nos centraremos en PyTorch, uno de los frameworks más populares y mejor mantenidos. <em>PyTorch fue desarrollado originalmente por Meta IA como parte del laboratorio de investigación de inteligencia artificial de Facebook antes de que pasara a depender de la fundación Linux.</em></p>
+<p>Está diseñado para ser intuitivo y fácil de usar, compartiendo muchas similitudes con la biblioteca de Python NumPy.</p>
+<section id="pytorch-tensors" class="level4">
+<h4 class="anchored" data-anchor-id="pytorch-tensors">PyTorch Tensors</h4>
+<p>Podemos importar el módulo PyTorch llamando a</p>
+<div id="919b62c1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch</span></code></pre></div>
+</div>
+<ul>
+<li><p>La estructura de datos fundamental en PyTorch es un tensor, que es similar a una matriz.</p></li>
+<li><p>Puede soportar muchas operaciones matemáticas y constituye un componente básico para nuestras redes neuronales.</p></li>
+<li><p>Se pueden crear tensores a partir de listas de Python o matrices NumPy utilizando la clase <code>torch.tensor()</code> esta clase convierte los datos a un formato compatible para el aprendizaje profundo.</p></li>
+</ul>
+<div id="6f771392" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">mi_lista <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>], [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>]]</span>
+<span id="cb2-2">tensor <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor(mi_lista)</span>
+<span id="cb2-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(tensor)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor([[1, 2, 3],
+        [4, 5, 6]])</code></pre>
+</div>
+</div>
+</section>
+<section id="atributos-de-los-tensores" class="level3">
+<h3 class="anchored" data-anchor-id="atributos-de-los-tensores">Atributos de los Tensores</h3>
+<p>Podemos llamar a <code>tensor.shape</code> para mostrar la forma de nuestro objeto recién creado.</p>
+<div id="2c2e1a13" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(tensor.shape)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>torch.Size([2, 3])</code></pre>
+</div>
+</div>
+<p>Y <code>tensor.dtype()</code> para mostrar su tipo de datos, aquí un entero de 64 bits.</p>
+<div id="8c75b707" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(tensor.dtype)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>torch.int64</code></pre>
+</div>
+</div>
+<p>Verificar la forma y el tipo de datos garantiza que los tensores se alineen correctamente con nuestro modelo y tarea, y puede ayudarnos en caso de depuración.</p>
+<section id="operaciones-con-tensores" class="level4">
+<h4 class="anchored" data-anchor-id="operaciones-con-tensores">Operaciones con Tensores</h4>
+<p>Se pueden sumar o restar tensores de PyTorch, siempre que sus formas sean compatibles.</p>
+<div id="0eb14449" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor([[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>], [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>]])</span>
+<span id="cb8-2">b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor([[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>],[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>]])</span>
+<span id="cb8-3">c <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor([[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>], [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>]])</span></code></pre></div>
+</div>
+<div id="0b092554" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> b)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor([[3, 3],
+        [5, 5]])</code></pre>
+</div>
+</div>
+<p>Cuando las dimensiones no son compatibles, obtendremos un error.</p>
+<p>También podemos realizar la multiplicación por elemento, lo que implica multiplicar cada elemento correspondiente.</p>
+<div id="d3be80a4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(a<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>b)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor([[2, 2],
+        [6, 6]])</code></pre>
+</div>
+</div>
+<p>También esta incluida la multiplicación de matrices, que no es más que uno forma de combinar dos matrices para crear una nueva.</p>
+<div id="dd752390" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">@</span> b)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor([[ 5,  5],
+        [10, 10]])</code></pre>
+</div>
+</div>
+<p>Detras de escena, los modelos de aprendizaje profundo realizan innumerables operaciones como la suma y multiplicación para procesar datos y aprender patrones.</p>
+
+
+</section>
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <category>PyTorch</category>
+  <guid>https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/</guid>
+  <pubDate>Tue, 01 Jul 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://j-isaula.github.io/Web_JI/posts/DL_PyTorch/fondo.webp" medium="image" type="image/webp"/>
+</item>
 <item>
   <title>Arquitectura de Redes Neuronales</title>
   <dc:creator>Juan Isaula</dc:creator>
